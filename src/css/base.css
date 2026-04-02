@@ -55,11 +55,12 @@
 }
 
 body {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: var(--font-main);
     color: var(--color-neutral-darkest);
-    font-size: 16px;
-    line-height: 1.5;
+    background-color: var(--color-scheme-1-background);
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 /* Styles for Mobile and Tab devices */
@@ -72,6 +73,6 @@ section {
 /* Styles for Desktop devices */
 @media screen and (min-width: 1440px) {
     section {
-       padding: 72px 0;
+       padding: 80px 0;
     }
 }

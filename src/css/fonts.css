@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../css/fonts/Raleway/static/Raleway-Bold.ttf') format('ttf'),
+    url('../css/fonts/Raleway/static/Raleway-Medium.ttf') format('ttf'),
+        url('../css/fonts/Raleway/static/Raleway-Regular.ttf') format('ttf'),
+        url('../css/fonts/Raleway/static/Raleway-SemiBold.ttf') format('ttf'),
+}
+
+@font-face {
+    font-family: 'IBMPlexSans';
+    src: url('../css/fonts/IBM_Plex_Sans/static/IBMPlexSans-Medium.ttf') format('ttf'),
+}
