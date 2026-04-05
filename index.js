@@ -60,9 +60,9 @@ import{i as R,A as z,S as _,N as F,P as N}from"./assets/vendor-T21FUQNi.js";(fun
           <div class="star-container">
             ${[1,2,3,4,5].map(f=>`
               <div class="star">
-                <svg class="star-empty"><use xlink:href="../svg/feedback.svg#icon-star-empty"></use></svg>
-                <svg class="star-half"><use xlink:href="../svg/feedback.svg#icon-half-star"></use></svg>
-                <svg class="star-filled"><use xlink:href="../svg/feedback.svg#icon-star"></use></svg>
+                <svg class="star-empty"><use xlink:href="./svg/feedback.svg#icon-star-empty"></use></svg>
+                <svg class="star-half"><use xlink:href="./svg/feedback.svg#icon-half-star"></use></svg>
+                <svg class="star-filled"><use xlink:href="./svg/feedback.svg#icon-star"></use></svg>
               </div>
             `).join("")}
           </div>
