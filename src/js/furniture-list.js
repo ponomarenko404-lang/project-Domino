@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const data = await response.json();
-    console.log('furnitures response:', data);
 
     return {
       items: Array.isArray(data.furnitures)
@@ -125,7 +124,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function createFurnitureCardMarkup(item) {
     const imageUrl =
-      Array.isArray(item.images) && item.images.length > 0 ? item.images[0] : '';
+      Array.isArray(item.images) && item.images.length > 0
+        ? item.images[0]
+        : '';
 
     return `
       <li class="furniture-card">
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         <p class="furniture-card-price">${item.price ?? 0} грн</p>
 
-        <button class="details-btn" type="button" data-id="${item._id || ''}">
+        <button class="details-btn btn-white" type="button" data-id="${item._id || ''}">
           Детальніше
         </button>
       </li>
@@ -155,7 +156,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function renderFurnitureCards(items) {
-    refs.furnitureList.innerHTML = items.map(createFurnitureCardMarkup).join('');
+    refs.furnitureList.replaceChildren();
+
+    refs.furnitureList.insertAdjacentHTML(
+      'beforeend',
+      items.map(createFurnitureCardMarkup).join('')
+    );
   }
 
   function appendFurnitureCards(items) {
@@ -164,6 +170,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       items.map(createFurnitureCardMarkup).join('')
     );
   }
+
   async function loadInitialFurnitures() {
     showLoader();
     hideLoadMoreButton();
@@ -187,13 +194,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       console.error('Помилка початкового завантаження меблів:', error);
 
-      refs.furnitureList.innerHTML = `
-        <li class="furniture-card">
-          <p class="furniture-card-title">
-            На жаль, не вдалося завантажити меблі. Спробуйте пізніше.
-          </p>
-        </li>
-      `;
+      refs.furnitureList.replaceChildren();
+
+      refs.furnitureList.insertAdjacentHTML(
+        'beforeend',
+        `
+          <li class="furniture-card">
+            <p class="furniture-card-title">
+              На жаль, не вдалося завантажити меблі. Спробуйте пізніше.
+            </p>
+          </li>
+        `
+      );
 
       hideLoadMoreButton();
     } finally {
@@ -211,17 +223,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadInitialFurnitures();
   }
 
-  function addCategoryListeners() {
+  async function onLoadMoreClick() {
+    showLoader();
+
+    try {
+      currentPage += 1;
+
+      const response = await fetchFurnitures(currentPage, currentCategory);
+      const items = response.items;
+      totalItems = response.totalItems;
+
+      if (!Array.isArray(items) || items.length === 0) {
+        hideLoadMoreButton();
+        return;
+      }
+
+      appendFurnitureCards(items);
+      totalLoadedItems += items.length;
+
+      if (totalLoadedItems >= totalItems) {
+        hideLoadMoreButton();
+      } else {
+        showLoadMoreButton();
+      }
+    } catch (error) {
+      console.error('Помилка завантаження наступної порції:', error);
+      currentPage -= 1;
+    } finally {
+      hideLoader();
+    }
+  }
+
+  function addEventListeners() {
     refs.categoryButtons.forEach(button => {
       button.addEventListener('click', onCategoryButtonClick);
     });
+
+    refs.loadMoreBtn.addEventListener('click', onLoadMoreClick);
   }
 
   try {
+    showLoader();
     categories = await fetchCategories();
-    addCategoryListeners();
+    addEventListeners();
     await loadInitialFurnitures();
   } catch (error) {
-    console.error(error);
+    console.error('Помилка ініціалізації:', error);
+
+    refs.furnitureList.replaceChildren();
+
+    refs.furnitureList.insertAdjacentHTML(
+      'beforeend',
+      `
+        <li class="furniture-card">
+          <p class="furniture-card-title">
+            На жаль, не вдалося завантажити меблі. Спробуйте пізніше.
+          </p>
+        </li>
+      `
+    );
+
+    hideLoadMoreButton();
+  } finally {
+    hideLoader();
   }
 });
