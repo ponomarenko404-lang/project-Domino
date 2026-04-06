@@ -102,7 +102,7 @@ const initModalHandlers = () => {
   }
 };
 
-document.addEventListener('keydown', event => {
+document.addEventListener('keyup', event => {
   if (event.key === 'Escape' && isModalOpen()) {
     closeOrderModal();
   }
