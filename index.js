@@ -29,6 +29,7 @@ import{S as Z,N as ee,P as te,a as re,A as oe}from"./assets/vendor-D1Nb-4x6.js";
             width="335"
             height="277"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
