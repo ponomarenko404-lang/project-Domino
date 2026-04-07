@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/project-Domino/assets/favicon-kZ9SGHkM.svg" />
+    <meta name="description" content="Меблерія - cтвори свій ідеальний дім." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Створіть свій ідеальний дім</title>
+    <script type="module" crossorigin src="/project-Domino/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-Domino/assets/vendor-BpbbouEm.js">
+    <link rel="stylesheet" crossorigin href="/project-Domino/assets/vendor-oAoHvcqG.css">
+    <link rel="stylesheet" crossorigin href="/project-Domino/assets/index-BTSiwU0q.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/project-Domino/assets/favicon-kZ9SGHkM.svg" />
-  <meta name="description" content="Меблерія - cтвори свій ідеальний дім." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Створіть свій ідеальний дім</title>
-  <script type="module" crossorigin src="/project-Domino/index.js"></script>
-  <link rel="modulepreload" crossorigin href="/project-Domino/assets/vendor-D1Nb-4x6.js">
-  <link rel="stylesheet" crossorigin href="/project-Domino/assets/vendor-oAoHvcqG.css">
-  <link rel="stylesheet" crossorigin href="/project-Domino/assets/index-BI06DY9Z.css">
-</head>
-
-<body>
-  <section class="navbar">
+  <body>
+    <section class="navbar">
     <div class="container nav-container">
         <a href="./index.html" class="logo-link">
             <svg class="company-icon" width="159" height="35" aria-label="Логотип компанії">
@@ -55,10 +54,10 @@
 
     </div>
 </section>
-<!-- Main content -->
-  <main>
-    
-    <section class="section furniture-section" id="furniture">
+    <!-- Main content -->
+    <main>
+      
+      <section class="section furniture-section" id="furniture">
   <div class="container">
     <h2 class="furniture-title">Наші меблі</h2>
     <p class="furniture-text">Знайдіть ідеальні рішення для вашого інтер'єру</p>
@@ -285,7 +284,7 @@
   </div>
 </section>
 
-    <section class="about-section" id="about">
+      <section class="about-section" id="about">
   <div class="container">
     <div class="about-content">
       <h2 class="about-title">Про Меблерію</h2>
@@ -321,8 +320,43 @@
   </div>
 </section>
 
-    
-    <section class="section faq-section" id="faq">
+      <section class="popular-products section" id="popular-products">
+  <div class="container">
+    <h2 class="popular-products-title">Популярні товари</h2>
+
+    <div class="slider-container">
+      <div class="swiper popular-swiper">
+        <ul class="swiper-wrapper js-popular-list"></ul>
+      </div>
+
+      <div class="swiper-pagination js-swiper-pagination"></div>
+
+      <button class="js-swiper-button-prev interactive" type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M15 18l-6-6 6-6"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </button>
+
+      <button class="js-swiper-button-next interactive" type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M9 6l6 6-6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+      <section class="section faq-section" id="faq">
   <div class="container faq-container">
     <h2 class="faq-title">Часті питання</h2>
 
@@ -332,7 +366,7 @@
           <button type="button" class="ac-trigger">
             <span class="faq-text">Як здійснюється доставка меблів?</span>
             <svg class="faq-icon" width="32" height="32">
-              <use href="/project-Domino/assets/faq-icon-VjVF1Wlz.svg#faq-icon"></use>
+              <use href="/img/faq-icon/faq-icon.svg#faq-icon"></use>
             </svg>
           </button>
         </h3>
@@ -351,7 +385,7 @@
               Чи є можливість вибрати колір або матеріал?
             </span>
             <svg class="faq-icon" width="32" height="32">
-              <use href="/project-Domino/assets/faq-icon-VjVF1Wlz.svg#faq-icon"></use>
+              <use href="/img/faq-icon/faq-icon.svg#faq-icon"></use>
             </svg>
           </button>
         </h3>
@@ -370,7 +404,7 @@
               Чи можна повернути товар, якщо він не підійшов?
             </span>
             <svg class="faq-icon" width="32" height="32">
-              <use href="/project-Domino/assets/faq-icon-VjVF1Wlz.svg#faq-icon"></use>
+              <use href="/img/faq-icon/faq-icon.svg#faq-icon"></use>
             </svg>
           </button>
         </h3>
@@ -389,7 +423,7 @@
               Чи надаєте ви послугу збирання меблів?
             </span>
             <svg class="faq-icon" width="32" height="32">
-              <use href="/project-Domino/assets/faq-icon-VjVF1Wlz.svg#faq-icon"></use>
+              <use href="/img/faq-icon/faq-icon.svg#faq-icon"></use>
             </svg>
           </button>
         </h3>
@@ -406,7 +440,7 @@
           <button type="button" class="ac-trigger">
             <span class="faq-text">Як здійснити оплату?</span>
             <svg class="faq-icon" width="32" height="32">
-              <use href="/project-Domino/assets/faq-icon-VjVF1Wlz.svg#faq-icon"></use>
+              <use href="/img/faq-icon/faq-icon.svg#faq-icon"></use>
             </svg>
           </button>
         </h3>
@@ -421,7 +455,7 @@
   </div>
 </section>
 
-    <section class="feedback-section" id="feedback-section">
+      <section class="feedback-section" id="feedback-section">
   <div class="container">
     <h2 class="feedback-title">Відгуки клієнтів</h2>
     <h3 class="feedback-subtitle">Дізнайтеся, що кажуть наші задоволені клієнти про наші меблі.</h3>
@@ -454,9 +488,9 @@
     </div>
   </template>
 </section>
-  </main>
+    </main>
 
-<footer class="page-footer">
+    <footer class="page-footer">
     <div class="container footer-container">
 
         <div class="high-footer">
@@ -518,8 +552,8 @@
 
     </div>
 </footer>
-<!-- Modals -->
-<!-- MODAL -->
+    <!-- Modals -->
+    <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
     <!-- CLOSE -->
@@ -574,7 +608,7 @@
   </div>
 </template>
 
-<div
+    <div
   class="order-modal-backdrop is-hidden"
   id="order-modal-backdrop"
   aria-hidden="true"
@@ -660,6 +694,5 @@
   </div>
 </div>
 
-</body>
-
+  </body>
 </html>
