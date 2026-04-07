@@ -9,7 +9,7 @@
     <script type="module" crossorigin src="/project-Domino/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-Domino/assets/vendor-BpbbouEm.js">
     <link rel="stylesheet" crossorigin href="/project-Domino/assets/vendor-oAoHvcqG.css">
-    <link rel="stylesheet" crossorigin href="/project-Domino/assets/index-S_SEvrJ5.css">
+    <link rel="stylesheet" crossorigin href="/project-Domino/assets/index-CQAgYEgU.css">
   </head>
 
   <body>
@@ -352,27 +352,30 @@
 
       <div class="swiper-pagination js-swiper-pagination"></div>
 
-      <button class="js-swiper-button-prev interactive" type="button">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M15 18l-6-6 6-6"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-          />
-        </svg>
-      </button>
-
-      <button class="js-swiper-button-next interactive" type="button">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M9 6l6 6-6 6"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-          />
-        </svg>
-      </button>
+      <ul class="popular-products-nav-list">
+        <li class="popular-products-nav-item">
+          <button
+            class="js-swiper-button-prev"
+            type="button"
+            aria-label="Попередній слайд"
+          >
+            <svg width="24" height="24" aria-hidden="true">
+              <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-left-arrow-alt"></use>
+            </svg>
+          </button>
+        </li>
+        <li class="popular-products-nav-item">
+          <button
+            class="js-swiper-button-next"
+            type="button"
+            aria-label="Наступний слайд"
+          >
+            <svg width="24" height="24" aria-hidden="true">
+              <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-right-arrow-alt"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -479,7 +482,9 @@
       <section class="feedback-section" id="feedback-section">
   <div class="container">
     <h2 class="feedback-title">Відгуки клієнтів</h2>
-    <h3 class="feedback-subtitle">Дізнайтеся, що кажуть наші задоволені клієнти про наші меблі.</h3>
+    <h3 class="feedback-subtitle">
+      Дізнайтеся, що кажуть наші задоволені клієнти про наші меблі.
+    </h3>
 
     <div class="reviews-slider swiper">
       <div class="swiper-wrapper" id="reviews-list"></div>
@@ -487,12 +492,16 @@
       <ul class="feedback-list">
         <li class="feedback-item">
           <button class="swiper-button-prev">
-            <svg><use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-left-arrow-alt"></use></svg>
+            <svg>
+              <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-left-arrow-alt"></use>
+            </svg>
           </button>
         </li>
         <li class="feedback-item">
           <button class="swiper-button-next">
-            <svg><use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-right-arrow-alt"></use></svg>
+            <svg>
+              <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-right-arrow-alt"></use>
+            </svg>
           </button>
         </li>
       </ul>
@@ -503,12 +512,19 @@
 
   <template id="star-template">
     <div class="star">
-      <svg class="star-empty"><use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-star-empty"></use></svg>
-      <svg class="star-half"><use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-half-star"></use></svg>
-      <svg class="star-filled"><use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-star"></use></svg>
+      <svg class="star-empty">
+        <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-star-empty"></use>
+      </svg>
+      <svg class="star-half">
+        <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-half-star"></use>
+      </svg>
+      <svg class="star-filled">
+        <use xlink:href="/project-Domino/assets/feedback-BYtfmoii.svg#icon-star"></use>
+      </svg>
     </div>
   </template>
 </section>
+
     </main>
 
     <footer class="page-footer">
