@@ -77,7 +77,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 40px;
 }
 
 .menu-close-btn {
@@ -93,6 +92,7 @@
 
 .mobile-menu-list {
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .mobile-menu-list li:not(:last-child) {
@@ -115,7 +115,6 @@
 
 .mobile-order-btn {
   display: block;
-  margin-top: 32px;
   padding: 8px 123px;
   text-align: center;
   cursor: pointer;
@@ -145,7 +144,8 @@
 
 .mobile-nav {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
@@ -158,15 +158,14 @@
   .mobile-menu-container {
     position: absolute;
     top: calc(100% + 15px); /* Відступ від нижнього краю хедера*/
-    left: auto;
+    left: 519px;
     right: 0; /* Вирівнювання по правому краю */
-    width: 249px;
     height: 396px;
     transform: translateX(+20px);
     transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
     /* Додаємо обмеження, щоб меню не виходило за межі екрана */
-    max-width: calc(100vw - 64px); /* Враховуємо відступи контейнера */
-    min-width: 200px; /* Мінімальна ширина для читабельності */
+    max-width: calc(100vw - 519px - 20px); /* Враховуємо відступи та позицію */
+    min-width: 249px; /* Мінімальна ширина для читабельності */
   }
 
   .mobile-menu-container.is-open {
@@ -185,7 +184,6 @@
 
   .mobile-menu-list {
     text-align: right;
-    margin-bottom: 32px;
     margin-right: 16px;
   }
 
@@ -214,6 +212,16 @@
   top: 68px; /* Відступ від верхнього краю хедера */
   opacity: 1;
   visibility: visible;
+}
+
+.mobile-nav {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 95px;
+}
+
+.mobile-order-btn {
+  margin-left: -64px;
 }
 }
 
