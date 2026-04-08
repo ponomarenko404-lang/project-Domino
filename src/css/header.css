@@ -119,6 +119,7 @@
   padding: 8px 123px;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .mobile-order-btn:hover,
@@ -140,6 +141,12 @@
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 32px 24px 0 var(--opacity-white-5);
   transform: translateY(0);
+}
+
+.mobile-nav {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }
 
 /* --- Планшет (Tablet) --- */
