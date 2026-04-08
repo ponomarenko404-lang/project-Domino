@@ -195,13 +195,26 @@ const initForm = () => {
       return;
     }
 
+    // Перевірка на отримання правильного об'єкту з furniture-modal.js
+    if (!dataOrders || !dataOrders.modelId || !dataOrders.color) {
+      await loadDependencies();
+      iziToast.error({
+        message: 'Будь ласка, оберіть товар та колір перед замовленням.',
+        position: 'topRight',
+        timeout: 2500,
+      });
+      return;
+    }
+
     const payload = {
       name: elements.orderName.value.trim(),
       phone: elements.orderPhone.value.trim(),
       comment: elements.orderComment.value.trim(),
-      modelId: dataOrders.modelId.trim(),
-      color: dataOrders.color.trim(),
+      modelId: String(dataOrders.modelId).trim(),
+      color: String(dataOrders.color).trim(),
     };
+
+    console.log('Отримані дані для замовлення:', payload);
 
     try {
       await sendOrderRequest(payload);
