@@ -1,6 +1,7 @@
-import 'css-star-rating/css/star-rating.css';
 import iziToast from 'izitoast';
+import 'css-star-rating/css/star-rating.css';
 import 'izitoast/dist/css/iziToast.min.css';
+import { openOrderModal } from './order-modal.js';
 
 const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
 
@@ -37,9 +38,15 @@ function hideLoader() {
 
 function roundRate(rate) {
   const decimal = rate % 1;
+
   if (decimal >= 0.3 && decimal <= 0.7) {
     return Math.floor(rate) + 0.5;
   }
+
+  if (decimal >= 0.8 || decimal <= 0.2) {
+    return Math.round(rate);
+  }
+
   return Math.round(rate);
 }
 
@@ -51,19 +58,20 @@ function createRatingMarkup(rate) {
   let valueClass = `value-${Math.round(rounded)}`;
   if (hasHalf) valueClass = `value-${fullStars} half`;
 
-  return `
-    <div class="rating medium star-svg ${valueClass} label-hidden">
-      <div class="star-container">
-        ${[1, 2, 3, 4, 5].map(() => `
-          <div class="star">
-            <svg class="star-empty"><use xlink:href="../svg/feedback.svg#icon-star-empty"></use></svg>
-            <svg class="star-half"><use xlink:href="../svg/feedback.svg#icon-half-star"></use></svg>
-            <svg class="star-filled"><use xlink:href="../svg/feedback.svg#icon-star"></use></svg>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
+  const container = document.createElement('div');
+  container.className = `rating medium star-svg ${valueClass} label-hidden`;
+
+  const starContainer = document.createElement('div');
+  starContainer.className = 'star-container';
+
+  const template = document.getElementById('modal-star-template');
+  for (let i = 0; i < 5; i++) {
+    const clone = template.content.cloneNode(true);
+    starContainer.appendChild(clone);
+  }
+
+  container.appendChild(starContainer);
+  return container;
 }
 
 function fillModal(item) {
@@ -86,7 +94,8 @@ function fillModal(item) {
   modalPrice.textContent = `${item.price ?? 0} грн`;
   modalDescription.textContent = item.description ?? '';
   modalSize.textContent = `Розміри: ${item.sizes ?? ''}`;
-  modalRating.innerHTML = createRatingMarkup(item.rate ?? 0);
+  modalRating.innerHTML = '';
+  modalRating.appendChild(createRatingMarkup(item.rate ?? 0));
 
   modalColorOptions.innerHTML = item.color
     .map((hex, i) => `
@@ -150,4 +159,11 @@ modal.addEventListener('click', e => {
 
 document.addEventListener('keyup', e => {
   if (e.key === 'Escape') closeModal();
+});
+
+const orderBtn = document.querySelector('.modal-order-btn');
+
+orderBtn.addEventListener('click', () => {
+  closeModal();
+  openOrderModal();
 });
