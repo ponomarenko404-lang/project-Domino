@@ -24,6 +24,8 @@ const elements = {
   closeButton: null,
 };
 
+let lastFocusedElement = null;
+
 const initElements = () => {
   elements.form = document.getElementById('order-modal-form');
   elements.orderName = document.getElementById('order-name');
@@ -56,6 +58,40 @@ const restoreFormFromStorage = () => {
 const isModalOpen = () =>
   elements.backdrop && !elements.backdrop.classList.contains('is-hidden');
 
+const canRestoreFocusTo = element => {
+  if (!(element instanceof HTMLElement) || !element.isConnected) {
+    return false;
+  }
+
+  if (element.hasAttribute('disabled') || element.closest('[inert]')) {
+    return false;
+  }
+
+  return (
+    element.getClientRects().length > 0 &&
+    window.getComputedStyle(element).visibility !== 'hidden'
+  );
+};
+
+const focusBodyFallback = () => {
+  document.body.setAttribute('tabindex', '-1');
+  document.body.focus({ preventScroll: true });
+
+  requestAnimationFrame(() => {
+    document.body.removeAttribute('tabindex');
+  });
+};
+
+const restoreFocusAfterClose = () => {
+  if (canRestoreFocusTo(lastFocusedElement)) {
+    lastFocusedElement.focus({ preventScroll: true });
+  } else {
+    focusBodyFallback();
+  }
+
+  lastFocusedElement = null;
+};
+
 const syncBodyScrollLock = () => {
   document.body.classList.toggle('order-modal-open', isModalOpen());
 };
@@ -65,9 +101,19 @@ export const openOrderModal = () => {
     return;
   }
 
+  lastFocusedElement =
+    document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+
+  elements.backdrop.removeAttribute('inert');
   elements.backdrop.classList.remove('is-hidden');
   elements.backdrop.setAttribute('aria-hidden', 'false');
   syncBodyScrollLock();
+
+  requestAnimationFrame(() => {
+    elements.closeButton?.focus({ preventScroll: true });
+  });
 };
 
 const closeOrderModal = () => {
@@ -75,13 +121,20 @@ const closeOrderModal = () => {
     return;
   }
 
+  if (elements.backdrop.contains(document.activeElement)) {
+    restoreFocusAfterClose();
+  }
+
   elements.backdrop.classList.add('is-hidden');
+  elements.backdrop.setAttribute('inert', '');
   elements.backdrop.setAttribute('aria-hidden', 'true');
   syncBodyScrollLock();
 };
 
 const initModalHandlers = () => {
   if (elements.backdrop) {
+    elements.backdrop.toggleAttribute('inert', !isModalOpen());
+
     elements.backdrop.addEventListener('click', event => {
       if (event.target === elements.backdrop) {
         closeOrderModal();
