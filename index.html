@@ -120,13 +120,20 @@
     <ul class="categories-list">
       <li class="categories-item">
         <button class="category-btn is-active" type="button" data-name="all">
-          <img
-            src="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp"
-            srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 279w, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 558w"
-            sizes="(max-width: 767px) 50vw, (max-width: 1439px) 25vw, 14vw"
-            alt="Всі товари"
-            decoding="async"
-          />
+          <picture>
+            <source
+              srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 279w, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 558w"
+              sizes="(max-width: 767px) 50vw, (max-width: 1439px) 25vw, 14vw"
+              type="image/webp"
+            />
+            <img
+              src="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp"
+              alt="Всі товари"
+              width="279"
+              height="205"
+              decoding="async"
+            />
+          </picture>
           <span>Всі товари</span>
         </button>
       </li>
