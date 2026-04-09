@@ -122,15 +122,23 @@
         <button class="category-btn is-active" type="button" data-name="all">
           <picture>
             <source
-              srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 279w, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 558w"
-              sizes="(max-width: 767px) 50vw, (max-width: 1439px) 25vw, 14vw"
-              type="image/webp"
+              media="(min-width: 1440px)"
+              srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 1x, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 2x"
+            />
+            <source
+              media="(min-width: 768px)"
+              srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 1x, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 2x"
+            />
+            <source
+              media="(max-width: 767px)"
+              srcset="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp 1x, /project-Domino/assets/furniture-showroom-2x-DK2f0svR.webp 2x"
             />
             <img
               src="/project-Domino/assets/furniture-showroom-1x-CDmJcazy.webp"
               alt="Всі товари"
               width="279"
               height="205"
+              loading="eager"
               decoding="async"
             />
           </picture>
@@ -324,7 +332,6 @@
     <div class="furniture-loader is-hidden" aria-hidden="true"></div>
     <h3 class="visually-hidden">Список меблів</h3>
     <ul class="furniture-list"></ul>
-
     <div class="furniture-controls">
       <div class="furniture-loader-more is-hidden" aria-hidden="true"></div>
       <button class="load-more-btn btn-red is-hidden" type="button">
